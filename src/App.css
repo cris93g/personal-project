@@ -1,0 +1,194 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(22, 65, 6);
+  height: 17vh;
+  color: white;
+}
+
+.fas {
+  float: right;
+  color: white;
+  text-align: center;
+  margin: 1em;
+  border: 1px solid #FFFFFF;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.input1 {
+  float: right;
+  text-align: left;
+  margin: 2em;
+  border: 1px solid #FFFFFF;
+  font-size: 15px;
+  padding: .5em;
+}
+
+.Header img {
+  float: left;
+  height: 150px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
+
+.image-container,
+.image-container2,
+.image-container3 {
+  width: 100%;
+  height: 53%;
+  margin-bottom: 10px;
+}
+
+.card-image,
+.card-image2,
+.card-image3,
+.image-container4 
+{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.description,
+.description2 {
+  font-size: 22px;
+  height: 39%;
+  /* overflow-y: scroll; */
+  text-align: center;
+  padding: 5px;
+}
+.description3 {
+  font-size: 20px;
+  height: 39%;
+  /* overflow-y: scroll; */
+  text-align: center;
+  padding: 5px;
+}
+.updateButton{
+  text-align: right
+}
+.updateButton1{
+  font-size: 15px;
+font-weight: bolder;
+
+}
+.updateButton2{
+  font-size: 15px;font-weight: bolder;
+}
+
+
+.productCard,
+.cartCard,
+.shopsCard 
+{
+  display: inline-block;
+  color: white;
+  background: rgb(33, 75, 14);
+  height: 350px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+
+.app-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+
+.main-cards,
+.cart-cards,
+.product-cards {
+  margin: 10px;
+}
+
+.product,
+.cart,
+.main,
+.dropzone
+  {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.total{
+  
+  background-color: rgb(33, 75, 14);
+  color: white;
+  font-size: 29px;
+  width: 300px;
+  position: absolute;
+  top:18%;
+  right:0;
+}
+.my-button2 {
+  background: none;
+  background-color:rgb(33, 75, 14);
+  font-size:28px ;
+  min-height: 90px;
+  color: white;
+  cursor: pointer;
+  border-radius: 9px;
+  width: 300px;
+  position:sticky;
+  right:0;
+}
+.my-button2:hover {
+  background-color: rgb(10, 104, 7);
+}
+.userCard{
+  color: white;
+  background: rgb(33, 75, 14);
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+.card-image4{
+  width: 100%;
+  height: 100%;
+}
