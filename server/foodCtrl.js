@@ -1,3 +1,4 @@
+var stripe = require("stripe")("sk_test_eROE1pkR0utGcbnT8VWLRPtW");
 module.exports = {
   getShops(req, res) {
     const db = req.app.get("db");
@@ -32,7 +33,6 @@ module.exports = {
     let { quantity, food_id, user_id } = req.body;
     db.cartItem([quantity, food_id, user_id])
       .then(item => {
-        console.log(req.body);
         return res.status(200).send(item);
       })
       .catch(console.log);
@@ -74,6 +74,36 @@ module.exports = {
         .catch(console.log);
     });
   },
+
+
+
+
+
+
+
+
+
+
+  // deleteAllFromCart(req, res) {
+  //   const db = req.app.get("db");
+  //   db.query("delete from cart where user_id = $1", req.params.id).then(() => {
+  //     // db.getCart([1])
+  //     db.cart(req.session.food_id)
+  //       .then(cart => {
+  //         return res.status(200).json(cart);
+  //       })
+  //       .catch(console.log);
+  //   });
+  // },
+
+
+
+
+
+
+
+
+
   updateCart(req, res) {
     const db = req.app.get("db");
     let { quantity } = req.body;
@@ -84,5 +114,23 @@ module.exports = {
         })
         .catch(console.log);
     });
+  },
+  checkout(req, res) {
+    const { token, total } = req.body;
+    const stripePayload = {
+      amount: Math.round(Number(total) * 100),
+      currency: "usd",
+      description: "Deliveroo Charge",
+      source: token,
+      statement_descriptor: "Somehting somehting"
+    };
+    const charge = stripe.charges.create(stripePayload);
+    charge
+      .then(data => {
+        res.sendStatus(200);
+      })
+      .catch(e => {
+        res.status(e.statusCode).send(e.message);
+      });
   }
 };

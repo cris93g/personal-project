@@ -7,6 +7,8 @@ const massive = require("massive");
 const passport = require("passport");
 // const yelp = require("yelp-fusion");
 const { getUser, strat, logout } = require(`${__dirname}/authCtrl`);
+const path = require("path");
+const PORT = process.env.PORT || 3001;
 
 const {
     CONNECTION_STRING,
@@ -31,6 +33,7 @@ const app = express();
 
 app.use(json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "../build")));
 
 app.use(
   session({
@@ -64,28 +67,32 @@ passport.use(strat);
 // );
 
 passport.serializeUser((user, done) => {
+  console.log("userfromme", user);
   const db = app.get("db");
-  db.getUserByAuthid([user.id]).then(response => {
-    if (!response[0]) {
-      db.addUserByAuthid([user.displayName, user.emails[0].value, user.id]).then(res =>
-        done(null, res[0]).catch(console.log)
-      );
-    } else return done(null, response[0]);
-  })
-  .catch(console.log)
+  db.getUserByAuthid([user.id])
+    .then(response => {
+      if (!response[0]) {
+        db.addUserByAuthid([
+          user.displayName,
+          user.emails[0].value,
+          user.id
+        ]).then(res => done(null, res[0]).catch(console.log));
+      } else return done(null, response[0]);
+    })
+    .catch(console.log);
 });
 passport.deserializeUser((user, done) => done(null, user));
 
 app.get(
   "/login",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/",
-    // successRedirect: "/api/me"
+    // successRedirect: "http://localhost:3000/#/",
+    successRedirect: "/#/",
     failureRedirect: "/api/login"
   })
 );
 app.get("/api/me", getUser);
-app.post('/logout', logout);
+app.post("/logout", logout);
 
 app.get("/api/test", (req, res, next) => {
   res.sendStatus(200);
@@ -93,7 +100,10 @@ app.get("/api/test", (req, res, next) => {
 
 routes(app);
 
-const PORT = process.env.PORT || 3001;
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

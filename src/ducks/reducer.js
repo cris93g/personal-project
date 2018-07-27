@@ -1,23 +1,21 @@
-import axios from "axios";
-
-const GET_FOOD = "GET_FOOD";
-
+import {
+  SET_TOTAL
+} from './actions'
 const initialState = {
-  food: []
+  total: 0
 };
 
+const setTotal = (state, payload) => {
+  const newState = {};
+  Object.assign(newState, state, {total: payload});
+  return newState;
+}
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case GET_FOOD + "_FULFILLED":
-      return { ...state, food: action.payload.data };
+    case SET_TOTAL:
+      return setTotal(state, action.payload)
     default:
       return state;
   }
 }
 
-export function getFood() {
-  return {
-    type: GET_PRODUCTS,
-    payload: axios.get("/api/food")
-  };
-}

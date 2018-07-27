@@ -15,13 +15,17 @@ const CartCard = props => {
         <div>${props.food.cost}</div>
         <div className="card-button">
           <Button onSubmit={props.onSubmit}> {props.text} </Button>
-          <div className="updateButton" >
-          {"  "}
-          <button className="updateButton1" onClick={props.onClick}>+</button>
-          {"       "}
-          {props.num}
-          {"     "}
-          <button className="updateButton2" onClick={props.onClick2}>-</button>
+          <div className="updateButton">
+            {"  "}
+            <button className="updateButton1" onClick={props.onClick}>
+              +
+            </button>
+            {"       "}
+            {props.num}
+            {"     "}
+            <button className="updateButton2" onClick={props.onClick2}>
+              -
+            </button>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "add": "^2.0.6",
     "auth0-js": "^9.7.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -10,6 +11,7 @@
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "install": "^0.12.1",
     "massive": "^5.0.0",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
@@ -19,8 +21,11 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-stripe-elements": "^2.0.1",
     "redux": "^4.0.0",
     "redux-promise-middleware": "^5.1.1",
+    "stripe": "^6.3.0",
+    "yarn": "^1.7.0",
     "yelp-fusion": "^2.0.3"
   },
   "scripts": {

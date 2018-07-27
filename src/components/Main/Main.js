@@ -13,7 +13,6 @@ class Main extends Component {
     axios
       .get("api/shops")
       .then(response => {
-        console.log(response.data);
         this.setState({
           shops: response.data
         });
@@ -22,6 +21,7 @@ class Main extends Component {
   }
 
   render() {
+    console.log("Iam working");
     return (
       <div className="main">
         {this.state.shops.map(shop => (

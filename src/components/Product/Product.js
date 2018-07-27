@@ -11,9 +11,7 @@ class Product extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props.match.params);
     axios.get("api/me").then(response => {
-      console.log(response.data);
       this.setState({
         user: response.data
       });
@@ -24,7 +22,6 @@ class Product extends Component {
     axios
       .get(`api/food/${this.props.match.params.shopid}`)
       .then(response => {
-        console.log(response.data);
         this.setState({
           food: response.data
         });
@@ -33,7 +30,6 @@ class Product extends Component {
   }
 
   addToCart = (quantity, food_id, user_id) => {
-    console.log(quantity, food_id, user_id);
     axios
       .post("/api/addtocart", {
         quantity,
@@ -42,15 +38,12 @@ class Product extends Component {
       })
 
       .then(res => {
-        console.log(res);
         // this.props.history.push("/");
       })
       .catch(console.log);
   };
 
   render() {
-    console.log(this.state.food);
-    console.log(this.props);
     return (
       <div className="product">
         {this.state.food.map(food => (

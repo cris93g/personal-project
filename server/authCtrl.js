@@ -8,7 +8,7 @@ const strat = new Auth0Strategy({
   callbackURL: "/login",
   scope: "openid email profile"
 },
-(accessTocken, refreshTocken, extraparams, profile, done) => {
+(accessTocken, refreshToken, extraparams, profile, done) => {
   done(null, profile);
 }
 );

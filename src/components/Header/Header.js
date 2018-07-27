@@ -37,8 +37,11 @@ class Header extends Component {
           <Link to='/product'>
           
           </Link>
+          
         </div>
-        <h1>DELIVOOO</h1>
+        <i className="fa fa-truck"></i>
+        <p className='D'> DELIVOOO </p>
+        {/* <h1 className="head" >DELIVOOO</h1> */}
 
         <div className="menu">
           <Link to="/user">
